@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class MostAuthorGetter {
 
-        public static Map<String, String> mostAuthorGetter() throws IOException {
+        public static Map<String, List<String>> mostAuthorGetter() throws IOException {
             String path = ".Datamart/MetaData";
             String[] folders = DocumentsGetter.getFolders(path);
             Map<String, List<String>> authorsmap = new HashMap<>();
