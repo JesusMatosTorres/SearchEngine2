@@ -53,12 +53,12 @@ public class ApiController {
 //            String type = req.params("type");
 //            ConnectionStatistics.Stats stats = new ConnectionStatistics.Stats();
 //            if (type.equalsIgnoreCase("authorwithmorebooks")){
-//                  Map<String, String> authorslist = mostAuthorGetter();
+//                  Map<String, List<String>> authorslist = mostAuthorGetter();
 //                  Map<String, String> mostOnes = new HashMap<>();
 //                  for (int i = 0; i < 3; i++) {
 //                      better = Better.getBetters(authorslist, mostOnes);
-//                      mostOnes.put(better, JoinJson.Join(authorsmap.get(better)));
-//                      authorsmap.remove(better);
+//                      mostOnes.put(better, JoinJson.Join(authorslist.get(better)));
+//                      authorslist.remove(better);
 //                  }
 //                  return mostOnes;
 //            }
