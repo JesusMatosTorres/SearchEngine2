@@ -11,8 +11,9 @@ import static spark.Spark.get;
 
 public class ApiController {
 
-    public static void getParams() {
+    public static void start() {
         Map<String, String> queryParams = new HashMap<>();
+        port(8080);
         get("/documents/:words", (req, res) -> {
             Set<String> allParams = req.queryParams();
             if (allParams.contains("from")) queryParams.put("from", req.queryParams("from").toLowerCase());
@@ -27,17 +28,17 @@ public class ApiController {
     }
 
     private static String solveApiConsult(Map<String, String> queryParams, List<String> requestParams) throws IOException {
-        ArrayList<String> metadataCoincidences = new MetadataFinder(queryParams).findCoincidences();
+        List<String> metadataCoincidences = new MetadataFinder(queryParams).findCoincidences();
 
         requestParams = new StopwordsDelete().delete(requestParams);
 
-        ArrayList<String> wordsCoincidences;
+        List<String> wordsCoincidences;
         if (requestParams.isEmpty()) wordsCoincidences = new MetadataFinder(queryParams).findCoincidences();
         else{
             wordsCoincidences = new WordsFinder(requestParams).findCoincidences();
         }
 
-        ArrayList<String> output = CoincidencesGetter.getCoincidences(wordsCoincidences, metadataCoincidences);
+        List<String> output = CoincidencesGetter.getCoincidences(wordsCoincidences, metadataCoincidences);
         Collections.sort(output);
 
         if (JoinJson.Join(output).isEmpty()) return "No Matches";
