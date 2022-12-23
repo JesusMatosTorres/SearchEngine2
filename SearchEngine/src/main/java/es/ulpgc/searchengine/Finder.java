@@ -2,8 +2,8 @@ package es.ulpgc.searchengine;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Finder {
-    public ArrayList<String> findCoincidences() throws IOException;
+   List<String> findCoincidences() throws IOException;
 }
