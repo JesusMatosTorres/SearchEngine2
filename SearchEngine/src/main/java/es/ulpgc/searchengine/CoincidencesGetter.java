@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class CoincidencesGetter {
 
-    public static ArrayList<String> getCoincidences(ArrayList<String> WordsCoincidences, ArrayList<String> MetadataCoincidences){
+    public static ArrayList<String> getCoincidences(List<String> WordsCoincidences, List<String> MetadataCoincidences){
         List<String> total = new ArrayList<>();
         total.addAll(WordsCoincidences);
         total.addAll(MetadataCoincidences);
